@@ -35,7 +35,7 @@ export default function Banner() {
                 noiseAmp={1}
                 chromaticAberration={0}
                 dither={0}
-                curvature={isMobile?1:0.09}
+                curvature={isMobile?0.001:0.09}
                 tint="#5C9944"
                 mouseReact={true}
                 mouseStrength={0.5}
