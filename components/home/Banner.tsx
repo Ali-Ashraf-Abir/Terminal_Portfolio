@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import FaultyTerminal from '../FaultyTerminal';
 import TextType from '../TextType';
+import MatrixBackground from '../MatrixEffect';
 
 export default function Banner() {
     const [isVisible, setIsVisible] = useState(false);
@@ -22,25 +23,29 @@ export default function Banner() {
         <section className="relative w-full min-h-screen lg:h-screen bg-black overflow-hidden">
             {/* Background Glitch Terminal */}
             <div className="absolute inset-0 w-full h-full">
-                <FaultyTerminal
-                    scale={isMobile ? 0.4 : 2.5}
-                    gridMul={[2, 1]}
-                    digitSize={isMobile ? 2.6 : 1.6}
-                    timeScale={1}
-                    pause={false}
-                    scanlineIntensity={isMobile ? 0.1 : 1}
-                    glitchAmount={isMobile?0.2:1}
-                    flickerAmount={isMobile?0.2:1}
-                    noiseAmp={1}
-                    chromaticAberration={0}
-                    dither={0}
-                    curvature={isMobile ? 0.02 : 0.09}
-                    tint="#5C9944"
-                    mouseReact={!isMobile}
-                    mouseStrength={0.5}
-                    pageLoadAnimation={false}
-                    brightness={1.1}
-                />
+                {isMobile ? (
+                    <MatrixBackground />
+                ) : (
+                    <FaultyTerminal
+                        scale={2.5}
+                        gridMul={[2, 1]}
+                        digitSize={1.6}
+                        timeScale={1}
+                        pause={false}
+                        scanlineIntensity={1}
+                        glitchAmount={1}
+                        flickerAmount={1}
+                        noiseAmp={1}
+                        chromaticAberration={0}
+                        dither={0}
+                        curvature={0.09}
+                        tint="#5C9944"
+                        mouseReact={true}
+                        mouseStrength={0.5}
+                        pageLoadAnimation={false}
+                        brightness={1.1}
+                    />
+                )}
             </div>
 
             {/* Banner Content Overlay */}
@@ -190,6 +195,30 @@ export default function Banner() {
 
             {/* CRT Vignette Effects */}
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.7) 100%)' }}></div>
+
+            <style jsx>{`
+                @keyframes gridScroll {
+                    0% { transform: translateY(0); }
+                    100% { transform: translateY(30px); }
+                }
+                
+                @keyframes scanBeam {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100vh); }
+                }
+                
+                @keyframes glitchPixel {
+                    0%, 100% { opacity: 0; }
+                    50% { opacity: 1; }
+                }
+                
+                @keyframes flicker {
+                    0%, 100% { opacity: 0.05; }
+                    50% { opacity: 0.02; }
+                    51% { opacity: 0.08; }
+                    52% { opacity: 0.02; }
+                }
+            `}</style>
         </section>
     );
 }
