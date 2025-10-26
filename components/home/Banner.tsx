@@ -28,9 +28,9 @@ export default function Banner() {
                     digitSize={isMobile ? 2.6 : 1.6}
                     timeScale={1}
                     pause={false}
-                    scanlineIntensity={isMobile ? 0.4 : 1}
-                    glitchAmount={1}
-                    flickerAmount={1}
+                    scanlineIntensity={isMobile ? 0.1 : 1}
+                    glitchAmount={isMobile?0.2:1}
+                    flickerAmount={isMobile?0.2:1}
                     noiseAmp={1}
                     chromaticAberration={0}
                     dither={0}
