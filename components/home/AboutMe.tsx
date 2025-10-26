@@ -115,7 +115,7 @@ export default function TerminalAbout() {
   }, [hasStarted]);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-black text-green-500 font-mono p-4 md:p-8 relative overflow-hidden">
+    <div ref={sectionRef} className="min-h-screen bg-black text-green-500 font-mono p-4 md:p-8 relative overflow-hidden ">
       {/* Scanlines effect */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute inset-0" style={{

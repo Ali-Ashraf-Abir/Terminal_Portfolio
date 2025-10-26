@@ -1,0 +1,35 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="#000000"/>
+  
+  <!-- Grid pattern (subtle) -->
+  <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+    <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#00ff00" stroke-width="0.3" opacity="0.1"/>
+  </pattern>
+  <rect width="64" height="64" rx="12" fill="url(#grid)"/>
+  
+  <!-- Terminal window border -->
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#000000" stroke="#00ff00" stroke-width="2"/>
+  
+  <!-- Terminal dots (top left) -->
+  <circle cx="14" cy="14" r="1.5" fill="#ff5555"/>
+  <circle cx="19" cy="14" r="1.5" fill="#ffff55"/>
+  <circle cx="24" cy="14" r="1.5" fill="#55ff55"/>
+  
+  <!-- Terminal prompt symbol ">" -->
+  <path d="M 16 28 L 24 32 L 16 36" stroke="#00ff00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Cursor/underscore -->
+  <rect x="28" y="34" width="10" height="2.5" fill="#00ff00">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Scanlines effect -->
+  <pattern id="scanlines" width="64" height="4" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="64" y2="0" stroke="#00ff00" stroke-width="0.5" opacity="0.1"/>
+  </pattern>
+  <rect width="64" height="64" rx="12" fill="url(#scanlines)"/>
+  
+  <!-- Glow effect -->
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+</svg>

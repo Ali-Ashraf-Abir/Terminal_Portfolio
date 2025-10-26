@@ -17,7 +17,32 @@ export default function TerminalContact() {
     const sectionRef = useRef(null);
     const outputEndRef = useRef(null);
     const [glitchText, setGlitchText] = useState('CONTACT_ME');
-    // Intersection Observer
+    const [isTerminalVisible, setIsTerminalVisible] = useState(false);
+    const terminalRef = useRef(null);
+    
+    // Intersection Observer for terminal visibility
+    useEffect(() => {
+        const terminalObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    setIsTerminalVisible(entry.isIntersecting);
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        if (terminalRef.current) {
+            terminalObserver.observe(terminalRef.current);
+        }
+
+        return () => {
+            if (terminalRef.current) {
+                terminalObserver.unobserve(terminalRef.current);
+            }
+        };
+    }, []);
+
+    // Intersection Observer for section
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -56,10 +81,12 @@ export default function TerminalContact() {
         return () => clearInterval(glitchInterval);
     }, []);
 
-    // Auto scroll to bottom
+    // Auto scroll to bottom (only when terminal is visible)
     useEffect(() => {
-        outputEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [terminalOutput]);
+        if (isTerminalVisible && outputEndRef.current) {
+            outputEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }, [terminalOutput, isTerminalVisible]);
 
     const addTerminalLine = (text, type = 'output') => {
         setTerminalOutput(prev => [...prev, { text, type, timestamp: Date.now() }]);
@@ -294,7 +321,7 @@ export default function TerminalContact() {
                     {/* Right side - Terminal Output & Contact Info */}
                     <div className="space-y-8">
                         {/* Terminal Output */}
-                        <div>
+                        <div ref={terminalRef}>
                             <div className="bg-gray-900 border-2 border-green-500 rounded-t-lg p-3 flex items-center space-x-2 shadow-lg shadow-green-500/50">
                                 <div className="flex space-x-2">
                                     <div className="w-3 h-3 rounded-full bg-red-500"></div>

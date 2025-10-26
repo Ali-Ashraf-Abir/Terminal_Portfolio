@@ -47,7 +47,7 @@ export default function TerminalFooter() {
     { name: 'Contact', command: '$ mail -s contact', section: 'contact', icon: FaMailBulk }
   ];
 
-  const handleScrollToSection = (sectionId:any) => {
+  const handleScrollToSection = (sectionId: any) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ 
@@ -58,7 +58,7 @@ export default function TerminalFooter() {
   };
 
   return (
-    <footer className="bg-black text-green-500 font-mono relative overflow-hidden border-t-4 border-green-500">
+    <footer className="bg-black text-green-500 font-mono relative overflow-hidden border-t-4 border-green-500 pt-12">
       {/* Scanlines effect */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute inset-0" style={{
@@ -74,7 +74,7 @@ export default function TerminalFooter() {
         }}></div>
       </div>
 
-      {/* Animated top border */}
+      {/* Animated scanning line - top to bottom */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent animate-scan"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-8 md:py-12">
@@ -246,15 +246,15 @@ export default function TerminalFooter() {
       <style jsx>{`
         @keyframes scan {
           0% {
-            transform: translateX(-100%);
+            transform: translateY(-100%);
           }
           100% {
-            transform: translateX(100%);
+            transform: translateY(calc(100vh));
           }
         }
 
         .animate-scan {
-          animation: scan 3s linear infinite;
+          animation: scan 4s linear infinite;
         }
 
         @keyframes glitch {

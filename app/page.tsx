@@ -16,7 +16,7 @@ export default function Home() {
     // Hide loader after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);

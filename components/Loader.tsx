@@ -27,7 +27,7 @@ export default function TerminalLoader() {
         }
         return prev + 2;
       });
-    }, 40); // 2 seconds total (100 / 2 * 40ms = 2000ms)
+    }, 60); // 2 seconds total (100 / 2 * 40ms = 2000ms)
 
     return () => clearInterval(progressInterval);
   }, []);

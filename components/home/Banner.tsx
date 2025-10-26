@@ -11,7 +11,7 @@ export default function Banner() {
     }, []);
 
     return (
-        <section className="relative w-full lg:h-screen h-[140vh] bg-black overflow-hidden">
+        <section className="relative w-full lg:h-screen h-[150vh] bg-black overflow-hidden">
             {/* Background Glitch Terminal */}
             <FaultyTerminal
                 scale={2.5}

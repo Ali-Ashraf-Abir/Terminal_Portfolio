@@ -62,6 +62,7 @@ const Skills = () => {
           backgroundSize: '50px 50px',
         }}></div>
       </div>
+      
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%)'
       }}></div>
