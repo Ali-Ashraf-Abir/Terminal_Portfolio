@@ -1,27 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Primary Theme Colors */
+    --color-primary: 34 197 94; /* green-500 */
+    --color-primary-light: 74 222 128; /* green-400 */
+    --color-primary-dark: 22 163 74; /* green-600 */
+    
+    /* Accent Colors */
+    --color-accent: 52 211 153; /* emerald-400 */
+    --color-accent-light: 110 231 183; /* emerald-300 */
+    
+    /* Background Colors */
+    --color-bg-primary: 0 0 0; /* black */
+    --color-bg-card: 0 0 0; /* black for card backgrounds */
+    
+    /* Text Colors */
+    --color-text-primary: 209 213 219; /* gray-300 */
+    --color-text-secondary: 156 163 175; /* gray-400 */
+    --color-text-light: 255 255 255; /* white */
+    
+    /* Border & Shadow */
+    --color-border: var(--color-primary);
+    --color-shadow: var(--color-primary);
+  }
+  
+  /* Dark mode (if needed) */
+  .dark {
+    --color-primary: 34 197 94;
+    --color-primary-light: 74 222 128;
+    --color-primary-dark: 22 163 74;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.scroll-terminal::-webkit-scrollbar {
+  width: 8px;               /* width of the scrollbar */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.scroll-terminal::-webkit-scrollbar-track {
+  background: #111;         /* dark background like terminal */
+}
+
+.scroll-terminal::-webkit-scrollbar-thumb {
+  background-color: #00ff00; /* bright green */
+  border-radius: 4px;
+  border: 2px solid #111;    /* padding effect */
+}
+
+.scroll-terminal::-webkit-scrollbar-thumb:hover {
+  background-color: #66ff66; /* lighter green on hover */
+}
+
+/* For Firefox */
+.scroll-terminal {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 #111;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Background Classes */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.crt-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem; /* curve edges */
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+  pointer-events: none;
+  transform: translateZ(50px); /* pop out effect */
+}
+.bg-primary {
+  background-color: rgb(var(--color-primary));
+}
+
+.bg-primary-light {
+  background-color: rgb(var(--color-primary-light));
+}
+
+/* Text Classes */
+.text-primary {
+  color: rgb(var(--color-primary));
+}
+
+.text-primary-light {
+  color: rgb(var(--color-primary-light));
+}
+
+.text-accent {
+  color: rgb(var(--color-accent));
+}
+
+.text-accent-light {
+  color: rgb(var(--color-accent-light));
+}
+
+/* Border Classes */
+.border-primary {
+  border-color: rgb(var(--color-primary) / 0.3);
+}
+
+.border-primary-hover {
+  border-color: rgb(var(--color-primary) / 0.6);
+}
+
+/* Gradient Classes */
+.gradient-primary {
+  background: linear-gradient(to right, 
+    rgb(var(--color-primary-light)), 
+    rgb(var(--color-accent-light)), 
+    rgb(var(--color-primary)));
 }
